@@ -6,8 +6,10 @@ body {
 
 .container {
   height: 60rem;
+  width: 80rem;
   margin: 2rem;
   font-family: Prompt;
+  color: #333333;
   border: 1px solid black;
 }
 
@@ -43,26 +45,121 @@ body {
 .editEventContainer {
   position: relative;
   left: 5rem;
-  top: 20rem;
-  width: 10rem;
+  top: 15rem;
+  height: 24rem;
+  width: 30rem;
   padding: 5px 10px;
   display: flex;
   flex-direction: column;
+  border-radius:  10px;
   border: 1px solid black;
 }
 
+.editEventHeading {
+  position: relative;
+  font-size: 2rem;
+  letter-spacing: 5px;
+  left: 9rem;
+}
 
-/*    <form className='editEventContainer'>
-            <input type='text' placeholder='Event Name...' className='nameInput' />
-            <input type='date' className='dateInput'/>
-            <select className='typeInput'>
-                <option>option 1</option>
-                <option>option 2</option>
-                <option>option 3</option>
-            </select>
+.nameInput {
+  position: relative;
+  left: 1.5rem; 
+  height: 1.2rem;
+  width: 25rem;
+  font-size: 18px;
+  padding: 8px 11px;
+  border-radius: 10px;
+}
 
-            <ul className='cancelConfirmBtns'>
-                <li className='confirmBtn'>Confirm</li>
-                <li className='cancelBtn'>Cancel</li>
-            </ul>
-        </form> */
+.nameInput:focus {
+  outline: none;
+}
+
+.date-typeContainer {
+  position: relative;
+  left: 1.5rem;
+  margin-top: 20px;
+  height: 2.1rem; 
+  width: 26.3rem;
+  display: flex;
+  justify-content: space-between;
+  /* border: 1px solid black; */
+}
+
+.dateInput {
+  font-size: 17px;
+  padding: 5px 10px;
+  border-radius: 10px;
+}
+
+.dateInput:focus {
+  outline: none;
+}
+
+.typeInput {
+  position: relative;
+  left: .2rem;
+  width: 8rem;
+  font-size: 17px;
+  text-align: center;
+  padding: 5px 10px;
+  border-radius: 10px
+}
+
+.typeInput:focus {
+  outline: none;
+}
+
+.cancelConfirmBtns {
+  position: relative;
+  left: 1.5rem;
+  height: 6rem;
+  width: 24rem;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  /* border: 1px solid red; */
+}
+
+.confirmBtn {
+  position: relative;
+  right: 2.5rem;
+  height: 1.6rem;
+  width: 25.3rem;
+  font-size: 22px;
+  text-align: center;
+  letter-spacing: 8px;
+  font-weight: 600;
+  padding: 7px 10px ;
+  color: #F7FFF7;
+  background: #1885f2;
+  border-radius: 7px;
+  cursor: pointer;
+}
+
+.confirmBtn:hover {
+  background: #0b6ac9;
+}
+
+.cancelBtn {
+  position: relative;
+  right: 2.5rem;
+  height: 1.6rem;
+  width: 25.3rem;
+  font-size: 22px;
+  text-align: center;
+  letter-spacing: 8px;
+  font-weight: 600;
+  padding: 7px 10px ;
+  color: #333333;
+  outline: 1px solid #e2dfdf;
+  border-radius: 7px;
+  cursor: pointer;
+}
+
+.cancelBtn:hover {
+  background: #e2dfdf;
+  outline: none;
+}
