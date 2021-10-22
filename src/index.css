@@ -1,13 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Prompt:wght@400;600;700&family=Saira:wght@400;600;700&family=Titillium+Web:wght@400;600;700&display=swap');
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.container {
+  height: 60rem;
+  margin: 2rem;
+  font-family: Prompt;
+  border: 1px solid black;
 }
+
+/* -- INDIVIDUAL EVENT STYLES -- */
+
+.indEventView {
+  position: relative;
+  left: 2rem;
+  top: 2rem;
+  height: 1.5rem;
+  width: 20rem;
+  padding: 5px 10px;
+  border-radius: 15px;
+  outline: 1px solid black;
+}
+
+
+/* -- DAILY EVENTS STYLES -- */
+
+.dailyEventView {
+  position: relative;
+  left: 5rem;
+  height: 1.5rem;
+  width: 20rem;
+  padding: 5px 10px;
+  border-radius: 15px;
+  outline: 1px solid black;
+}
+
+
+/* -- EDIT EVENT STYLES -- */
+
+.editEventContainer {
+  position: relative;
+  left: 5rem;
+  top: 20rem;
+  width: 10rem;
+  padding: 5px 10px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+}
+
+
+/*    <form className='editEventContainer'>
+            <input type='text' placeholder='Event Name...' className='nameInput' />
+            <input type='date' className='dateInput'/>
+            <select className='typeInput'>
+                <option>option 1</option>
+                <option>option 2</option>
+                <option>option 3</option>
+            </select>
+
+            <ul className='cancelConfirmBtns'>
+                <li className='confirmBtn'>Confirm</li>
+                <li className='cancelBtn'>Cancel</li>
+            </ul>
+        </form> */
