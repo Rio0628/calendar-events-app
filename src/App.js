@@ -24,6 +24,7 @@ function App() {
         <input className='setDateInput' type='date'/>
         <div className='mainCalendarCntr'>
           <Day />
+          {/* <Day />
           <Day />
           <Day />
           <Day />
@@ -56,8 +57,7 @@ function App() {
           <Day />
           <Day />
           <Day />
-          <Day />
-          <Day />
+          <Day /> */}
         </div>
       </div>
       
