@@ -16,11 +16,24 @@ function App() {
           <IndEvent />
         </div>
       </div>
-      <div className='calendarView'></div>
-      
+      <div className='calendarView'>
+        <div className='month-yearHeadingCntr'>
+          <h2 className='monthHeading'>June</h2>
+          <h2 className='yearHeading'>2021</h2>
+        </div>
+        <input className='setDateInput' type='date'/>
+        <div className='mainCalendarCntr'>
+          <Day />
+          <Day />
+          <Day />
+          <Day />
+          <Day />
+          <Day />
+        </div>
+      </div>
       {/* 
       <EditEvent />  */}
-      {/* <Day /> */}
+     
     </div>
   );
 }
