@@ -5,27 +5,64 @@ body {
 }
 
 .container {
-  height: 60rem;
-  width: 80rem;
+  height: 65rem;
+  width: 110rem;
   margin: 2rem;
+  margin-left: 5rem;
   font-family: Prompt;
   color: #333333;
+  /* border: 1px solid #e2dfdf; */
   border: 1px solid black;
+  border-radius: 10px;
+}
+
+/* -- EVENT VIEW STYLES -- */
+
+.eventsView {
+  position: relative;
+  top: -2px;
+  left: -3px;
+  height: 65rem;
+  width: 25rem;
+  border: 1px solid red;
+  border-radius: 10px 0px 0px 10px;
+}
+
+.eventsViewHeading {
+  position: relative;
+  bottom: 2rem;
+  font-family: 'Saira';
+  font-size: 3rem;
+  letter-spacing: 10px;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.indEventCntr {
+  position: relative;
+  top: .5rem;
+  height: 50rem;
+  overflow-y: hidden;
 }
 
 /* -- INDIVIDUAL EVENT STYLES -- */
 
 .indEventView {
   position: relative;
-  left: 2rem;
+  left: .5rem;
   top: 2rem;
   height: 1.5rem;
-  width: 20rem;
+  width: 22.8rem;
   padding: 5px 10px;
-  border-radius: 15px;
+  margin-bottom: 10px;
+  border-radius: 10px;
   outline: 1px solid black;
+  cursor: pointer;
 }
 
+.indEventView:hover {
+  background: #e2dfdf;
+}
 
 /* -- DAILY EVENTS STYLES -- */
 
@@ -175,6 +212,7 @@ body {
   top: 5rem;
   height: 12rem;
   width: 12rem;
+  margin-bottom: 15px;
   outline: 1px solid #e2dfdf;
   border-radius: 10px;
 }

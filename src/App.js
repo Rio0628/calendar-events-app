@@ -1,16 +1,26 @@
 import React from 'react';
 import IndEvent from './components/IndEvent';
-import IndDailyEvent from './components/IndDailyEvent';
 import EditEvent from './components/EditEvent';
 import Day from './components/Day';
 
 function App() {
   return (
     <div className="container">
-      {/* <IndDailyEvent />
-      <IndEvent />
+      <div className='eventsView'>
+        <h2 className='eventsViewHeading'>Upcoming Events</h2>
+        <div className='indEventCntr'>
+          <IndEvent />
+          <IndEvent />
+          <IndEvent />
+          <IndEvent />
+          <IndEvent />
+        </div>
+      </div>
+      <div className='calendarView'></div>
+      
+      {/* 
       <EditEvent />  */}
-      <Day />
+      {/* <Day /> */}
     </div>
   );
 }
