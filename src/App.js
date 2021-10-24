@@ -8,6 +8,7 @@ function App() {
     <div className="container">
       <div className='eventsView'>
         <h2 className='eventsViewHeading'>Upcoming Events</h2>
+        <div className='addEventBtn'>Add Event</div>
         <div className='indEventCntr'>
           <IndEvent />
           <IndEvent />
@@ -24,7 +25,6 @@ function App() {
         <input className='setDateInput' type='date'/>
         <div className='mainCalendarCntr'>
           <Day />
-          {/* <Day />
           <Day />
           <Day />
           <Day />
@@ -57,7 +57,8 @@ function App() {
           <Day />
           <Day />
           <Day />
-          <Day /> */}
+          <Day />
+          <Day />
         </div>
       </div>
       

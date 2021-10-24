@@ -114,6 +114,25 @@ body {
   /* outline: 1px solid green; */
 }
 
+.addEventBtn {
+  position: relative;
+  left: .3rem;
+  width: 18.5rem;
+  text-align: center;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  /* padding: 3px 10px; */
+  background: #e2dfdf;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.addEventBtn:hover {
+  font-weight: 600;
+  background: none;
+  outline: 1px solid #e2dfdf;
+}
+
 .indEventCntr {
   position: relative;
   top: .5rem;
@@ -290,6 +309,11 @@ body {
   width: 8rem;
   outline: 1px solid #e2dfdf;
   border-radius: 5px;
+  cursor: pointer;
+}
+
+.indDayView:hover {
+  outline: 2px solid #333333;
 }
 
 .name-numDayCntr {
