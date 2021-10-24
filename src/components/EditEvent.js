@@ -2,7 +2,7 @@ import React from 'react';
 
 
 
-const EditEvent = () => {
+const EditEvent = (props) => {
     return (
         <form className='editEventContainer'>
             <h3 className='editEventHeading'>Edit Event</h3>
@@ -16,8 +16,8 @@ const EditEvent = () => {
                 </select>
             </div>
             <ul className='cancelConfirmBtns'>
-                <li className='confirmBtn'>Confirm</li>
-                <li className='cancelBtn'>Cancel</li>
+                <li className='confirmBtn' onClick={props.onClick}>Confirm</li>
+                <li className='cancelBtn' onClick={props.onClick}>Cancel</li>
             </ul>
         </form>
     )
