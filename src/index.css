@@ -68,6 +68,8 @@ body {
   /* width: 12rem; */
   font-size: 15px;
   padding: 5px 10px;
+  outline: 1px solid #e2dfdf;
+  border: none;
   border-radius: 10px;
 }
 
@@ -131,6 +133,108 @@ body {
   font-weight: 600;
   background: none;
   outline: 1px solid #e2dfdf;
+}
+
+.addEventOpen {
+  position: relative;
+  left: .3rem; 
+  width: 18.5rem;
+  height: 8.8rem;
+  border-radius: 3px;
+  outline: 1px solid gray;
+}
+
+.addEventOpenHeading {
+  position: relative;
+  text-align: center;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+}
+
+.nameAddEvent {
+  position: relative;
+  left: .3rem;
+  bottom: 1rem;
+  width: 16.5rem;
+  padding: 3px 10px;
+  border-radius: 5px;
+  outline: 1px solid #e2dfdf;
+  border: none;
+}
+
+.nameAddEvent:focus {
+  outline: none;
+}
+
+.date-typeCntrAdd {
+  position: relative;
+  left: .3rem;
+  top: 5px;
+  width: 17.7rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.dateAddEvent {
+  position: relative;
+  bottom: 1rem;
+  padding: 0px 5px;
+  outline: 1px solid #e2dfdf;
+  border: none;
+  border-radius: 5px;
+}
+
+.typeAddEvent {
+  position: relative;
+  bottom: 1rem;
+  padding: 2px 5px;
+  outline: 1px solid #e2dfdf;
+  border: none;
+  border-radius: 5px;
+}
+
+.cnclCnfrmBtns {
+  position: relative;
+  bottom: 1.3rem;
+  list-style: none;
+  /* outline: 1px solid black; */
+}
+
+.cnfrmBtnAdd {
+  position: relative;
+  right: 2.2rem;
+  width: 17.7rem;
+  text-align: center;
+  letter-spacing: 8px;
+  font-weight: 600;
+  text-transform: uppercase;
+  border-radius: 5px;
+  color: #F7FFF7;
+  background: #1885f2;
+  cursor: pointer;
+}
+
+.cnfrmBtnAdd:hover {
+  background: #0b6ac9;
+}
+
+.cnclBtnAdd {
+  position: relative;
+  right: 2.2rem;
+  top: 5px;
+  width: 17.7rem;
+  text-align: center;
+  letter-spacing: 8px;
+  font-weight: 600;
+  text-transform: uppercase;
+  border-radius: 5px;
+  outline: 1px solid #333333;
+  cursor: pointer;
+}
+
+.cnclBtnAdd:hover {
+  background: #e2dfdf;
+  outline: none;
 }
 
 .indEventCntr {
