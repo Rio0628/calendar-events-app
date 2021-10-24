@@ -27,6 +27,7 @@ class App extends React.Component {
    
     return (
       <div className="container">
+        
         <div className='eventsView'>
           <h2 className='eventsViewHeading'>Upcoming Events</h2>
           
@@ -103,7 +104,7 @@ class App extends React.Component {
             <Day />
           </div>
         </div>
-        <EditEvent />
+        {/* <EditEvent /> */}
        
       </div>
     );

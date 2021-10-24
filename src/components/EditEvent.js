@@ -1,6 +1,7 @@
 import React from 'react';
 
 
+
 const EditEvent = () => {
     return (
         <form className='editEventContainer'>
