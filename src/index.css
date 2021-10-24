@@ -284,95 +284,104 @@ body {
 
 .editEventContainer {
   position: relative;
-  left: 5rem;
+  right: 30rem;
   top: 15rem;
-  height: 24rem;
+  height: 15rem;
   width: 30rem;
   padding: 5px 10px;
   display: flex;
   flex-direction: column;
-  border-radius:  10px;
+  border-radius:  5px;
   border: 1px solid black;
+  background: #ffffff;
 }
 
 .editEventHeading {
   position: relative;
-  font-size: 2rem;
+  font-size: 1.2rem;
   letter-spacing: 5px;
-  left: 9rem;
+  left: 4.5rem;
 }
 
 .nameInput {
   position: relative;
-  left: 1.5rem; 
-  height: 1.2rem;
-  width: 25rem;
-  font-size: 18px;
-  padding: 8px 11px;
+  left: .5rem; 
+  /* height: 1rem; */
+  width: 15rem;
+  font-size: 13px;
+  letter-spacing: 1px;
+  padding: 4px 10px;
+  outline: 1px solid #e2dfdf;
+  border: none;
   border-radius: 10px;
 }
 
 .nameInput:focus {
-  outline: none;
+  outline: 1px solid #e2dfdf;
 }
 
 .date-typeContainer {
   position: relative;
-  left: 1.5rem;
+  left: .5rem;
   margin-top: 20px;
-  height: 2.1rem; 
-  width: 26.3rem;
+  height: 1.5rem; 
+  width: 15rem;
   display: flex;
   justify-content: space-between;
-  /* border: 1px solid black; */
+  /* outline: 1px solid black; */
 }
 
 .dateInput {
-  font-size: 17px;
-  padding: 5px 10px;
+  font-size: 11px;
+  padding: 2px 8px;
   border-radius: 10px;
+  outline: 1px solid #e2dfdf;
+  border: none;
 }
 
 .dateInput:focus {
-  outline: none;
+  outline: 1px solid #e2dfdf;
 }
 
 .typeInput {
   position: relative;
-  left: .2rem;
+  left: 1.4rem;
   width: 8rem;
-  font-size: 17px;
+  font-size: 12px;
   text-align: center;
-  padding: 5px 10px;
+  padding: 2px 8px;
+  outline: 1px solid #e2dfdf;
+  border: none;
   border-radius: 10px
 }
 
 .typeInput:focus {
-  outline: none;
+  outline: 1px solid #e2dfdf;
 }
 
 .cancelConfirmBtns {
   position: relative;
-  left: 1.5rem;
-  height: 6rem;
-  width: 24rem;
+  left: .5rem;
+  height: 3.7rem;
+  width: 14.6rem;
   list-style: none;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  /* border: 1px solid red; */
+  /* outline: 1px solid red; */
 }
 
 .confirmBtn {
   position: relative;
   right: 2.5rem;
-  height: 1.6rem;
-  width: 25.3rem;
-  font-size: 22px;
+  height: 1rem;
+  width: 15.3rem;
+  font-size: 15px;
   text-align: center;
   letter-spacing: 8px;
   font-weight: 600;
-  padding: 7px 10px ;
+  text-transform: uppercase;
+  padding: 5px 10px ;
   color: #F7FFF7;
   background: #1885f2;
   border-radius: 7px;
@@ -386,13 +395,14 @@ body {
 .cancelBtn {
   position: relative;
   right: 2.5rem;
-  height: 1.6rem;
-  width: 25.3rem;
-  font-size: 22px;
+  height: 1rem;
+  width: 15.3rem;
+  font-size: 15px;
   text-align: center;
   letter-spacing: 8px;
   font-weight: 600;
-  padding: 7px 10px ;
+  text-transform: uppercase;
+  padding: 5px 10px ;
   color: #333333;
   outline: 1px solid #e2dfdf;
   border-radius: 7px;

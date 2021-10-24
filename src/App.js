@@ -51,9 +51,6 @@ class App extends React.Component {
             <div className='addEventBtn' onClick={onClick}>Add Event</div>
           }
           
-          
-          
-          
           <div className='indEventCntr'>
             <IndEvent />
             <IndEvent />
@@ -106,7 +103,7 @@ class App extends React.Component {
             <Day />
           </div>
         </div>
-        {/* <EditEvent /> */}
+        <EditEvent />
        
       </div>
     );
