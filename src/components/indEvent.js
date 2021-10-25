@@ -42,7 +42,7 @@ const IndEvent = (props) => {
         // Add a view for the event to see all of the info from the event itself ( Will be tiggered by a changing state boolean )
         <div className={ 'indEventView ' + indBackground(props.info.type)}>
             <p className='indEventHeading' onClick={props.onClick}>{props.info.name}</p>
-            <img className='editBtn' src={EditIcon} alt='Edit Button' onClick={props.onClick}/>
+            <img className='editBtn' src={EditIcon} alt='Edit Button' name={props.info.name} onClick={props.onClick}/>
             <p className='deleteBtn' onClick={props.onClick}>X</p>
         </div>
     )

@@ -11,8 +11,8 @@ class App extends React.Component {
       addEventTriggered: false,
       testEvents: [
         {date: '2021-10-12', type: 'holiday', name: 'Birthday Party'},
-        {date: '2021-10-12', type: 'business', name: 'App Meeting'},
-        {date: '2021-10-12', type: 'general', name: 'Fundraiser'},
+        {date: '2021-10-25', type: 'business', name: 'App Meeting'},
+        {date: '2021-10-22', type: 'general', name: 'Fundraiser'},
       ],
     }
   }
@@ -39,11 +39,18 @@ class App extends React.Component {
         this.setState({ addEventTriggered: false })
       }
 
-      if (e.target.className === 'editBtn' || e.target.className === 'confirmBtn' || e.target.className === 'cancelBtn') {
+      if (e.target.className === 'confirmBtn' || e.target.className === 'cancelBtn') {
         this.setState({ editEventTriggered: !this.state.editEventTriggered });
       }
+
+      if (e.target.className === 'editBtn') {
+        const currentEditEvent = this.state.testEvents.filter(event => event.name === e.target.getAttribute('name') )
+
+        this.setState({ currentEditEvent: currentEditEvent});
+        this.setState({ editEventTriggered: !this.state.editEventTriggered});
+      }
     }
-   
+    console.log(this.state.currentEditEvent);
     for (let i = 0; i < this.state.testEvents.length; i++ ) {    
       indEventsContainer.push( <IndEvent info={this.state.testEvents[i]} key={'event' + i} onClick={onClick}/>)
     }
@@ -127,7 +134,7 @@ class App extends React.Component {
           </div>
         </div>
 
-        {this.state.editEventTriggered ? <EditEvent onClick={onClick}/> : null}
+        {this.state.editEventTriggered ? <EditEvent onClick={onClick} info={this.state.currentEditEvent[0]}/> : null}
         
        
       </div>
