@@ -163,7 +163,7 @@ body {
 }
 
 .nameAddEvent:focus {
-  outline: none;
+  outline: 1px solid #e2dfdf;
 }
 
 .date-typeCntrAdd {
@@ -398,10 +398,6 @@ body {
 .deleteBtn:hover {
   color: #7777;
 }
-/*    <p className='indEventHeading'>Sample Event 1</p>
-            <img className='editBtn' src={EditIcon} alt='Edit Button' />
-            <p className='deleteBtn'>X</p>
-        </div> */
 
 /* -- DAILY EVENTS STYLES -- */
 

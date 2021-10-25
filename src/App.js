@@ -10,11 +10,16 @@ class App extends React.Component {
       editEventTriggered: false,
       addEventTriggered: false,
       testEvents: [
-        {date: '2021-10-12', type: 'holiday', name: 'Birthday Party'},
-        {date: '2021-10-25', type: 'business', name: 'App Meeting'},
-        {date: '2021-10-22', type: 'general', name: 'Fundraiser'},
+        {date: '2021-10-12', type: 'Holiday', name: 'Birthday Party'},
+        {date: '2021-10-25', type: 'Business', name: 'App Meeting'},
+        {date: '2021-10-22', type: 'General', name: 'Fundraiser'},
       ],
     }
+  }
+  
+  componentDidMount() {
+    // Initialize the typeNewEvent with a type of general as the default in case there is no type change
+    this.setState({ typeNewEvent: 'General'});
   }
 
   render () {
@@ -22,9 +27,17 @@ class App extends React.Component {
 
     const onChange = (e) => {
       console.log(e.target.value);
+      
+      if (e.target.className === 'nameAddEvent') {
+        this.setState({ nameNewEvent: e.target.value });
+      }
 
-      if (e.target.className === 'setDateInput') {
-        
+      if (e.target.className === 'dateAddEvent') {
+        this.setState({ dateNewEvent: e.target.value });
+      }
+
+      if (e.target.className === 'typeAddEvent') {
+        this.setState({ typeNewEvent: e.target.value });
       }
     }
 
@@ -36,7 +49,10 @@ class App extends React.Component {
       }
 
       if (e.target.className === 'cnfrmBtnAdd') {
+        const object = {date: this.state.dateNewEvent, type: this.state.typeNewEvent, name: this.state.nameNewEvent}
         this.setState({ addEventTriggered: false })
+        this.setState(prevState => ({ testEvents: [...prevState.testEvents, object]}));
+        console.log(object);
       }
 
       if (e.target.className === 'confirmBtn' || e.target.className === 'cancelBtn') {
@@ -49,8 +65,16 @@ class App extends React.Component {
         this.setState({ currentEditEvent: currentEditEvent});
         this.setState({ editEventTriggered: !this.state.editEventTriggered});
       }
+
+      if (e.target.className === 'deleteBtn') {
+        // console.log(e.target.getAttribute('name'))
+        let events = this.state.testEvents.map(event => event).filter(event => event.name !== e.target.getAttribute('name'));
+        this.setState({ testEvents: events });
+      }
     }
-    console.log(this.state.currentEditEvent);
+
+    console.log(this.state.typeNewEvent);
+    
     for (let i = 0; i < this.state.testEvents.length; i++ ) {    
       indEventsContainer.push( <IndEvent info={this.state.testEvents[i]} key={'event' + i} onClick={onClick}/>)
     }

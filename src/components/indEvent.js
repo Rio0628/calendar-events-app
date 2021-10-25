@@ -18,22 +18,22 @@ const IndEvent = (props) => {
     */
 
     const indBackground = (date) => {
-        if (date === 'general') {
+        if (date === 'General') {
             return 'general';
         }
-        if (date === 'social') {
+        if (date === 'Social') {
             return 'social';
         }
-        if (date === 'holiday') {
+        if (date === 'Holiday') {
             return 'holiday';
         }
-        if (date === 'personal') {
+        if (date === 'Personal') {
             return 'personal';
         }
-        if (date === 'important') {
+        if (date === 'Important') {
             return 'important';
         }
-        if (date === 'business') {
+        if (date === 'Business') {
                 return 'business';
         }
     };
@@ -43,7 +43,7 @@ const IndEvent = (props) => {
         <div className={ 'indEventView ' + indBackground(props.info.type)}>
             <p className='indEventHeading' onClick={props.onClick}>{props.info.name}</p>
             <img className='editBtn' src={EditIcon} alt='Edit Button' name={props.info.name} onClick={props.onClick}/>
-            <p className='deleteBtn' onClick={props.onClick}>X</p>
+            <p className='deleteBtn' onClick={props.onClick} name={props.info.name}>X</p>
         </div>
     )
 }
