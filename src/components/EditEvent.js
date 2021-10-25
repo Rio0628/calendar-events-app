@@ -10,9 +10,12 @@ const EditEvent = (props) => {
             <div className='date-typeContainer'>
             <input type='date' className='dateInput'/>
                 <select className='typeInput'>
-                    <option>option 1</option>
-                    <option>option 2</option>
-                    <option>option 3</option>
+                    <option>General</option>
+                    <option>Social</option>
+                    <option>Holiday</option>
+                    <option>Personal</option>
+                    <option>Important</option>
+                    <option>Business</option>
                 </select>
             </div>
             <ul className='cancelConfirmBtns'>

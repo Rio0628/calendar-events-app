@@ -247,7 +247,7 @@ body {
 
 /* -- INDIVIDUAL EVENT STYLES -- */
 
-.indEventView {
+.indEventView.general {
   position: relative;
   left: 1rem;
   top: 2rem;
@@ -255,15 +255,116 @@ body {
   width: 16rem;
   display: flex;
   justify-content: space-between;
+  font-weight: 600;
   padding: 5px 10px;
   margin-bottom: 10px;
   border-radius: 10px;
-  outline: 1px solid black;
+  background: rgba(226, 223, 223, .8);
   cursor: pointer;
 }
 
-.indEventView:hover {
-  background: #e2dfdf;
+.indEventView.general:hover {
+  background: rgba(226, 223, 223, 1);
+}
+
+.indEventView.social {
+  position: relative;
+  left: 1rem;
+  top: 2rem;
+  height: 1.2rem;
+  width: 16rem;
+  display: flex;
+  justify-content: space-between;
+  font-weight: 600;
+  padding: 5px 10px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  background: rgba(255, 234, 71, .8);
+  cursor: pointer;
+}
+
+.indEventView.social:hover {
+  background: rgba(255, 234, 71, 1);
+}
+
+.indEventView.holiday {
+  position: relative;
+  left: 1rem;
+  top: 2rem;
+  height: 1.2rem;
+  width: 16rem;
+  display: flex;
+  justify-content: space-between;
+  font-weight: 600;
+  padding: 5px 10px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  background: rgba(68, 114, 202, .8);
+  cursor: pointer;
+}
+
+.indEventView.holiday:hover {
+  background: rgba(68, 114, 202, 1);
+}
+
+.indEventView.personal {
+  position: relative;
+  left: 1rem;
+  top: 2rem;
+  height: 1.2rem;
+  width: 16rem;
+  display: flex;
+  justify-content: space-between;
+  font-weight: 600;
+  padding: 5px 10px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  background: rgba(117, 180, 45, .8);
+  cursor: pointer;
+}
+
+.indEventView.personal:hover {
+  background: rgba(117, 180, 45, 1);
+}
+
+.indEventView.important {
+  position: relative;
+  left: 1rem;
+  top: 2rem;
+  height: 1.2rem;
+  width: 16rem;
+  display: flex;
+  justify-content: space-between;
+  font-weight: 600;
+  padding: 5px 10px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  background: rgba(222, 54, 43, .8);
+  cursor: pointer;
+}
+
+.indEventView.important:hover {
+  background: rgba(222, 54, 43, 1);
+}
+
+.indEventView.business {
+  position: relative;
+  left: 1rem;
+  top: 2rem;
+  height: 1.2rem;
+  width: 16rem;
+  display: flex;
+  justify-content: space-between;
+  font-weight: 600;
+  padding: 5px 10px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  background: rgba(252, 97, 54, .8);
+  cursor: pointer;
+}
+
+.indEventView.business:hover {
+  background: rgba(252, 97, 54, 1);
 }
 
 .indEventHeading {

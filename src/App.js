@@ -9,14 +9,23 @@ class App extends React.Component {
     this.state = {
       editEventTriggered: false,
       addEventTriggered: false,
-      testEvents: {},
+      testEvents: [
+        {date: '2021-10-12', type: 'holiday', name: 'Birthday Party'},
+        {date: '2021-10-12', type: 'business', name: 'App Meeting'},
+        {date: '2021-10-12', type: 'general', name: 'Fundraiser'},
+      ],
     }
   }
 
   render () {
-    
+    let indEventsContainer = [];
+
     const onChange = (e) => {
       console.log(e.target.value);
+
+      if (e.target.className === 'setDateInput') {
+        
+      }
     }
 
     const onClick = (e) => {
@@ -34,10 +43,11 @@ class App extends React.Component {
         this.setState({ editEventTriggered: !this.state.editEventTriggered });
       }
     }
-    // const date = new Date();
-    // let finalDate = date.toString();
-    // finalDate = finalDate.split(" ");
-    // console.log(finalDate)
+   
+    for (let i = 0; i < this.state.testEvents.length; i++ ) {    
+      indEventsContainer.push( <IndEvent info={this.state.testEvents[i]} key={'event' + i} onClick={onClick}/>)
+    }
+
     return (
       <div className="container">
         
@@ -51,9 +61,12 @@ class App extends React.Component {
               <div className='date-typeCntrAdd'>
                 <input type='date' className='dateAddEvent' onChange={onChange}/>
                 <select className='typeAddEvent' onChange={onChange}>
-                  <option>option 1</option>
-                  <option>option 2</option>
-                  <option>option 3</option>
+                  <option>General</option>
+                  <option>Social</option>
+                  <option>Holiday</option>
+                  <option>Personal</option>
+                  <option>Important</option>
+                  <option>Business</option>
                 </select>
               </div>
               <ul className='cnclCnfrmBtns'>
@@ -66,11 +79,7 @@ class App extends React.Component {
           }
           
           <div className='indEventCntr'>
-            <IndEvent onClick={onClick}/>
-            <IndEvent />
-            <IndEvent />
-            <IndEvent />
-            <IndEvent />
+            {indEventsContainer}
           </div>
         </div>
         <div className='calendarView'>
@@ -78,7 +87,7 @@ class App extends React.Component {
             <h2 className='monthHeading'>June</h2>
             <h2 className='yearHeading'>2021</h2>
           </div>
-          <input className='setDateInput' type='date'/>
+          <input className='setDateInput' type='date' onChange={onChange}/>
           <div className='mainCalendarCntr'>
             <Day />
             <Day />
