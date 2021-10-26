@@ -128,10 +128,11 @@ class App extends React.Component {
     }
    
     for (let i = 0; i < this.state.currentMonthDays.length ; i++) {
-      indDay.push( <Day key={'day ' + i} infoDay={this.state.currentMonthDays[i]}/> );
+      indDay.push( <Day key={'day ' + i} infoDay={this.state.currentMonthDays[i]} events={this.state.testEvents}/> );
     }
 
-    
+    console.log(this.state.testEvents)
+ 
     return (
       <div className="container">
         
