@@ -34,7 +34,7 @@ const IndEvent = (props) => {
             return 'important';
         }
         if (date === 'Business') {
-                return 'business';
+            return 'business';
         }
     };
     

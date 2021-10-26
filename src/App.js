@@ -7,6 +7,8 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      startingYear: '',
+      startingMonth: '',
       editEventTriggered: false,
       addEventTriggered: false,
       testEvents: [
@@ -18,6 +20,17 @@ class App extends React.Component {
   }
   
   componentDidMount() {
+    // When the app is started a new date is given to the app (current date)
+    const date = new Date();
+
+    const createMonth = (month) => {
+      return month === 1 ? 'January' : month === 2 ? 'February' : month === 3 ? 'March' : month === 4 ? 'April' : month === 5 ? 'May' : month === 6 ? 'June' : month === 7 ? 'July' : month === 8 ? 'August' : month === 9 ? 'September' : month === 10 ? 'October' : month === 11 ? 'November' : month === 12 ? 'December' : null;
+    
+    }
+
+    this.setState({ startingYear: date.getFullYear() });
+    this.setState({ startingMonth: createMonth(date.getMonth() + 1) });
+    
     // Initialize the typeNewEvent with a type of general as the default in case there is no type change
     this.setState({ typeNewEvent: 'General'});
   }
@@ -40,6 +53,8 @@ class App extends React.Component {
         this.setState({ typeNewEvent: e.target.value });
       }
     }
+    console.log(this.state.startingYear);
+    console.log(this.state.startingMonth);
 
     const onClick = (e) => {
       console.log(e.target)
@@ -52,7 +67,8 @@ class App extends React.Component {
         const object = {date: this.state.dateNewEvent, type: this.state.typeNewEvent, name: this.state.nameNewEvent}
         this.setState({ addEventTriggered: false })
         this.setState(prevState => ({ testEvents: [...prevState.testEvents, object]}));
-        console.log(object);
+        this.setState({ nameNewEvent: ''});
+        this.setState({ dateNewEvent: ''});
       }
 
       if (e.target.className === 'confirmBtn' || e.target.className === 'cancelBtn') {
@@ -72,8 +88,6 @@ class App extends React.Component {
         this.setState({ testEvents: events });
       }
     }
-
-    console.log(this.state.typeNewEvent);
     
     for (let i = 0; i < this.state.testEvents.length; i++ ) {    
       indEventsContainer.push( <IndEvent info={this.state.testEvents[i]} key={'event' + i} onClick={onClick}/>)
@@ -115,8 +129,8 @@ class App extends React.Component {
         </div>
         <div className='calendarView'>
           <div className='month-yearHeadingCntr'>
-            <h2 className='monthHeading'>June</h2>
-            <h2 className='yearHeading'>2021</h2>
+            <h2 className='monthHeading'>December</h2>
+            <h2 className='yearHeading'>{this.state.startingYear}</h2>
           </div>
           <input className='setDateInput' type='date' onChange={onChange}/>
           <div className='mainCalendarCntr'>
