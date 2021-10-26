@@ -22,43 +22,46 @@ class App extends React.Component {
   }
 
   daysMonth(month, year) {
-    const date = new Date(2021, 0, 1);
-    let days = [];
-    while(date.getMonth() === 0) {
+    const date = new Date(year, month, 1);
+    let days = [], updatedDays = [];
+    while(date.getMonth() === month) {
       days.push(new Date(date));
       date.setDate(date.getDate() + 1)
     };
     
     for (let i = 0; i < days.length; i++) {
       let day = days[i];
-      day = day.toString();
-      this.setState(prevState => ({ currentMonthDays: [...prevState.currentMonthDays, day.split(' ')] }));
-      // console.log(day.split(' '))
+      day = day.toString().split(' ');
+      let dayObj = {name: day[0], month: day[1], dayNum: day[2], year: day[3]};
+      updatedDays.push(dayObj);
     }
+
+    this.setState({ currentMonthDays: updatedDays });
+  }
+
+  createMonth(month) {
+    return month === 1 ? 'January' : month === 2 ? 'February' : month === 3 ? 'March' : month === 4 ? 'April' : month === 5 ? 'May' : month === 6 ? 'June' : month === 7 ? 'July' : month === 8 ? 'August' : month === 9 ? 'September' : month === 10 ? 'October' : month === 11 ? 'November' : month === 12 ? 'December' : null;
   }
   
   componentDidMount() {
     // When the app is started a new date is given to the app (current date)
     const date = new Date();
   
-    const createMonth = (month) => {
-      return month === 1 ? 'January' : month === 2 ? 'February' : month === 3 ? 'March' : month === 4 ? 'April' : month === 5 ? 'May' : month === 6 ? 'June' : month === 7 ? 'July' : month === 8 ? 'August' : month === 9 ? 'September' : month === 10 ? 'October' : month === 11 ? 'November' : month === 12 ? 'December' : null;
     
-    }
-
     this.setState({ startingYear: date.getFullYear() });
-    this.setState({ startingMonth: createMonth(date.getMonth() + 1) });
+    this.setState({ startingMonth: this.createMonth(date.getMonth() + 1) });
     
     // Initialize the typeNewEvent with a type of general as the default in case there is no type change
     this.setState({ typeNewEvent: 'General'});
-    this.daysMonth();
+    this.daysMonth(date.getMonth(), date.getFullYear());
 
   }
   
   render () {
-    let indEventsContainer = [];
+    let indEventsContainer = [], indDay = [];
     
     console.log(this.state.currentMonthDays)
+    const changeMonthNum = (month) => { return month === '01' ? 0 : month === '02' ? 1 : month === '03' ? 2 : month === '04' ? 3 : month === '05' ? 4 : month === '06' ? 5 : month === '07' ? 6 : month === '08' ? 7 : month === '09' ? 8 : month === '10' ? 9 : month === '11' ? 10 : month === '12' ? 11 : null}
     
     const onChange = (e) => {
       console.log(e.target.value);
@@ -74,9 +77,18 @@ class App extends React.Component {
       if (e.target.className === 'typeAddEvent') {
         this.setState({ typeNewEvent: e.target.value });
       }
+      if (e.target.className === 'setDateInput') {
+        let input = e.target.value;
+        input = input.toString().split('-');
+        let month = changeMonthNum(input[1]);
+        this.setState({ startingYear: parseInt(input[0]) });
+        this.daysMonth(month, parseInt(input[0]));
+        this.setState({ startingMonth: this.createMonth(month + 1) });
+        this.setState({ startingYear: input[0] });
+      }
     }
-    console.log(this.state.startingYear);
-    console.log(this.state.startingMonth);
+    // console.log(this.state.startingYear);
+    // console.log(this.state.startingMonth);
 
     const onClick = (e) => {
       console.log(e.target)
@@ -114,11 +126,12 @@ class App extends React.Component {
     for (let i = 0; i < this.state.testEvents.length; i++ ) {    
       indEventsContainer.push( <IndEvent info={this.state.testEvents[i]} key={'event' + i} onClick={onClick}/>)
     }
-    let indDay = [];
-    for (let i = 0; i < 35; i++) {
-      indDay.push( <Day key={'day ' + i}/> );
+   
+    for (let i = 0; i < this.state.currentMonthDays.length ; i++) {
+      indDay.push( <Day key={'day ' + i} infoDay={this.state.currentMonthDays[i]}/> );
     }
 
+    
     return (
       <div className="container">
         
@@ -158,7 +171,7 @@ class App extends React.Component {
             <h2 className='monthHeading'>{this.state.startingMonth}</h2>
             <h2 className='yearHeading'>{this.state.startingYear}</h2>
           </div>
-          <input className='setDateInput' type='date' onChange={onChange}/>
+          <input className='setDateInput' type='month' onChange={onChange}/>
           <div className='mainCalendarCntr'>
             {indDay}
           </div>
