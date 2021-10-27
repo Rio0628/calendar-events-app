@@ -11,7 +11,7 @@ const IndDailyEvent = (props) => {
         indEvent = props.info;
     }
 
-    console.log(indEvent)
+    // console.log(indEvent)
    
     return (
         <div className={'dailyEventView ' + indBackground(indEvent.type)}>

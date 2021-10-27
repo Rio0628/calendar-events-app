@@ -25,7 +25,9 @@ body {
   /* right: 4.5rem; */
   height: 40rem;
   width: 80rem;
+  /* background: #fdfafb; */
   border-left: 1px solid black;
+  border-radius: 0px 5px 5px 0px;
 }
 
 .month-yearHeadingCntr {
@@ -87,8 +89,9 @@ body {
   display: flex;
   padding: 10px;
   padding-right: 0px;
-  border: 1px solid #e2dfdf;
-  border-radius: 10px;
+  border: 1px solid #e2dfdf; 
+  background: #fdfafb ;
+  border-radius: 5px;
   overflow-y: auto;
   display: grid;
   grid-template-columns: repeat(7, 8.4rem);
@@ -246,6 +249,28 @@ body {
   overflow-y: hidden;
 }
 
+.clearBtn {
+  position: relative;
+  left: 14rem;
+  top: 2rem;
+  width: 4rem;
+  height: 1.2rem;
+  font-size: 13px;
+  text-align: center;
+  letter-spacing: 2px;
+  font-weight: 600;
+  text-transform: uppercase;
+  padding: 1px 2px;
+  outline: 1px solid black;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.clearBtn:hover {
+  background: #e2dfdf;
+}
+
 /* -- INDIVIDUAL EVENT STYLES -- */
 
 .indEventView {
@@ -356,6 +381,7 @@ body {
   padding: 2px 8px;
   margin-bottom: 5px;
   border-radius: 15px;
+  pointer-events: none;
 }
 
 .dailyEventView.general {
@@ -525,7 +551,8 @@ body {
   height: 6rem;
   width: 8rem;
   outline: 1px solid #e2dfdf;
-  border-radius: 5px;
+  background: #ffff;
+  border-radius: 3px;
   cursor: pointer;
 }
 
@@ -540,6 +567,7 @@ body {
   padding: 2px 5px;
   display: flex;
   justify-content: space-between;
+  pointer-events: none;
   /* border: 1px solid black; */
 }
 
@@ -550,6 +578,7 @@ body {
   font-size: 12px;
   letter-spacing: 1px;
   padding: 0px 3px;
+  pointer-events: none;
   /* border: 1px solid red; */
 }
 
@@ -559,6 +588,7 @@ body {
   height: 1.5rem;
   font-size: 12px;
   padding: 0px 3px;
+  pointer-events: none;
 }
 
 .extraEvents {
@@ -571,4 +601,5 @@ body {
   padding: 2px 8px;
   background: rgba(226, 223, 223, .8);;
   border-radius: 10px;
+  pointer-events: none;
 }

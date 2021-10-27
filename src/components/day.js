@@ -40,7 +40,7 @@ const Day = (props) => {
     }
 
     return (
-        <div className='indDayView'>
+        <div className='indDayView' onClick={props.onClick} date={date}>
             <div className='name-numDayCntr'>
                 <p className='dayName'>{props.infoDay.name}</p>
                 <p className='dayNum'>{props.infoDay.dayNum}</p>

@@ -18,8 +18,8 @@ class App extends React.Component {
         {date: '2021-10-22', type: 'General', name: 'Fundraiser'},
         {date: '2021-10-22', type: 'General', name: 'Fundraiser'},
         {date: '2021-10-22', type: 'General', name: 'Fundraiser'},
-        {date: '2021-10-22', type: 'General', name: 'Fundraiser'},
       ],
+      currentEvents: [],
       currentMonthDays: [],
       updatedDays: [],
     }
@@ -51,7 +51,7 @@ class App extends React.Component {
     // When the app is started a new date is given to the app (current date)
     const date = new Date();
   
-    
+    this.setState({ currentEvents: this.state.testEvents });
     this.setState({ startingYear: date.getFullYear() });
     this.setState({ startingMonth: this.createMonth(date.getMonth() + 1) });
     
@@ -123,14 +123,21 @@ class App extends React.Component {
         let events = this.state.testEvents.map(event => event).filter(event => event.name !== e.target.getAttribute('name'));
         this.setState({ testEvents: events });
       }
+
+      if (e.target.className === 'indDayView') {
+        console.log(e.target.getAttribute('date'))
+        let events = this.state.testEvents.filter(event => event.date === e.target.getAttribute('date'));
+        this.setState({ currentEvents: events });
+        
+      }
     }
     
-    for (let i = 0; i < this.state.testEvents.length; i++ ) {    
-      indEventsContainer.push( <IndEvent info={this.state.testEvents[i]} key={'event' + i} onClick={onClick}/>)
+    for (let i = 0; i < this.state.currentEvents.length; i++ ) {    
+      indEventsContainer.push( <IndEvent info={this.state.currentEvents[i]} key={'event' + i} onClick={onClick}/>)
     }
    
     for (let i = 0; i < this.state.currentMonthDays.length ; i++) {
-      indDay.push( <Day key={'day ' + i} infoDay={this.state.currentMonthDays[i]} events={this.state.testEvents}/> );
+      indDay.push( <Day key={'day ' + i} infoDay={this.state.currentMonthDays[i]} events={this.state.testEvents} onClick={onClick}/> );
     }
 
     // console.log(this.state.testEvents)
@@ -165,6 +172,9 @@ class App extends React.Component {
             <div className='addEventBtn' onClick={onClick}>Add Event</div>
           }
           
+          {/* <p className='clearBtn' onClick={onClick}>Clear</p> */}
+          <div className='clearBtn' onClick={onClick}>Clear</div>
+
           <div className='indEventCntr'>
             {indEventsContainer}
           </div>
