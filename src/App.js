@@ -52,6 +52,7 @@ class App extends React.Component {
     const date = new Date();
   
     this.setState({ currentEvents: this.state.testEvents });
+    this.setState({ eventsPresent: true });
     this.setState({ startingYear: date.getFullYear() });
     this.setState({ startingMonth: this.createMonth(date.getMonth() + 1) });
     
@@ -92,7 +93,7 @@ class App extends React.Component {
       }
     }
 
-    const onClick = (e) => {
+    const onClick = async (e) => {
       console.log(e.target)
 
       if (e.target.className === 'addEventBtn' || e.target.className === 'cnclBtnAdd') {
@@ -102,7 +103,8 @@ class App extends React.Component {
       if (e.target.className === 'cnfrmBtnAdd') {
         const object = {date: this.state.dateNewEvent, type: this.state.typeNewEvent, name: this.state.nameNewEvent}
         this.setState({ addEventTriggered: false })
-        this.setState(prevState => ({ testEvents: [...prevState.testEvents, object]}));
+        await this.setState(prevState => ({ testEvents: [...prevState.testEvents, object]}));
+        this.setState(prevState => ({ currentEvents: this.state.testEvents }));
         this.setState({ nameNewEvent: ''});
         this.setState({ dateNewEvent: ''});
       }
@@ -121,17 +123,33 @@ class App extends React.Component {
       if (e.target.className === 'deleteBtn') {
         // console.log(e.target.getAttribute('name'))
         let events = this.state.testEvents.map(event => event).filter(event => event.name !== e.target.getAttribute('name'));
-        this.setState({ testEvents: events });
+        await this.setState({ testEvents: events});
+        this.setState({ currentEvents: this.state.testEvents });
       }
 
       if (e.target.className === 'indDayView') {
-        console.log(e.target.getAttribute('date'))
         let events = this.state.testEvents.filter(event => event.date === e.target.getAttribute('date'));
-        this.setState({ currentEvents: events });
+        
+        if (events.length > 0) {
+          this.setState({ currentEvents: events });
+          this.setState({ eventsPresent: true });
+        }
+        else {
+          this.setState({ currentEvents: events});
+          this.setState({ eventsPresent: false });
+        }
         
       }
+
+      if (e.target.className === 'returnBtn') {
+        if (this.state.currentEvents !== this.state.testEvents) {
+          this.setState({ currentEvents: this.state.testEvents });
+          this.setState({ eventsPresent: true });
+        }
+      }
     }
-    
+    console.log(this.state.currentEvents)
+    console.log(this.state.currentEvents.length)
     for (let i = 0; i < this.state.currentEvents.length; i++ ) {    
       indEventsContainer.push( <IndEvent info={this.state.currentEvents[i]} key={'event' + i} onClick={onClick}/>)
     }
@@ -140,7 +158,7 @@ class App extends React.Component {
       indDay.push( <Day key={'day ' + i} infoDay={this.state.currentMonthDays[i]} events={this.state.testEvents} onClick={onClick}/> );
     }
 
-    // console.log(this.state.testEvents)
+    // console.log(this.state.eventsPresent)
  
     return (
       <div className="container">
@@ -173,10 +191,10 @@ class App extends React.Component {
           }
           
           {/* <p className='clearBtn' onClick={onClick}>Clear</p> */}
-          <div className='clearBtn' onClick={onClick}>Clear</div>
+          <div className='returnBtn' onClick={onClick}>return</div>
 
           <div className='indEventCntr'>
-            {indEventsContainer}
+            {this.state.eventsPresent ? indEventsContainer : <h3 className='noEventsPrsnt'>There are no events present</h3>}
           </div>
         </div>
         <div className='calendarView'>

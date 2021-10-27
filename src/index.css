@@ -249,7 +249,7 @@ body {
   overflow-y: hidden;
 }
 
-.clearBtn {
+.returnBtn {
   position: relative;
   left: 14rem;
   top: 2rem;
@@ -261,14 +261,26 @@ body {
   font-weight: 600;
   text-transform: uppercase;
   padding: 1px 2px;
-  outline: 1px solid black;
+  outline: 1px solid #e2dfdf;
   border-radius: 5px;
   margin-bottom: 10px;
   cursor: pointer;
 }
 
-.clearBtn:hover {
+.returnBtn:hover {
+  outline: 1px solid black;
   background: #e2dfdf;
+}
+
+.noEventsPrsnt {
+  position: relative;
+  top: 2rem;
+  font-family: 'Saira';
+  font-size: 1.7rem;
+  letter-spacing: 3px;
+  text-align: center;
+  text-transform: uppercase;
+  /* border: 1px solid black; */
 }
 
 /* -- INDIVIDUAL EVENT STYLES -- */
@@ -558,6 +570,10 @@ body {
 
 .indDayView:hover {
   outline: 2px solid #333333;
+}
+
+.indDayView:focus {
+  outline: 3px solid #333333;
 }
 
 .name-numDayCntr {
