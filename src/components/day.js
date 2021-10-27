@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import IndDailyEvent from './IndDailyEvent';
 
 const Day = (props) => {
-    let indDailyEventsCntr = [], dailyEvents = [], eventsPresent = false, eventsCountBool = false, eventsCount = 0;
+    let indDailyEventsCntr = [], dailyEvents = {}, eventsPresent = false, eventsCountBool = false, eventsCount = 0;
     // let [dailyEvents , setDailyEvents] = useState([]);
     // console.log(props.infoDay)
     const monthNum = (month) => {
@@ -14,35 +14,30 @@ const Day = (props) => {
 
     const setEvents = () => {
         let events = props.events.filter(event => event.date === date); 
+      
         if (events.length > 0) {
-            dailyEvents.push(events);
+            dailyEvents = events.map(event => event);
             eventsPresent = true;
         }        
     };
     setEvents();
-    // console.log(eventsPresent)
-   
+
     if (eventsPresent) {
-        if (dailyEvents[0].length > 1) {
+        if (dailyEvents.length > 1) {
             for (let i = 0; i < 2 ; i++) {
-                indDailyEventsCntr.push( <IndDailyEvent key={'dailyEvent ' + i} /> );
+                indDailyEventsCntr.push( <IndDailyEvent key={'dailyEvent ' + i} info={dailyEvents[i]} eventsPresent={eventsPresent} num={i}/> );
             }
         }
         else {
             for (let i = 0; i < 1 ; i++) {
-                indDailyEventsCntr.push( <IndDailyEvent key={'dailyEvent ' + i} /> );
+                indDailyEventsCntr.push( <IndDailyEvent key={'dailyEvent ' + i} info={dailyEvents[i]} eventsPresent={eventsPresent} num={i}/> );
             }
         }
-        
-        
-        if (dailyEvents[0].length > 2) {
-            eventsCount = dailyEvents[0].length - 2;
+        if (dailyEvents.length > 2) {
+            eventsCount = dailyEvents.length - 2;
             eventsCountBool = true; 
         }
     }
-    
-    console.log(eventsCount)
-
 
     return (
         <div className='indDayView'>

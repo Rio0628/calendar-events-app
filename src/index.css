@@ -248,7 +248,7 @@ body {
 
 /* -- INDIVIDUAL EVENT STYLES -- */
 
-.indEventView.general {
+.indEventView {
   position: relative;
   left: 1rem;
   top: 2rem;
@@ -260,8 +260,11 @@ body {
   padding: 5px 10px;
   margin-bottom: 10px;
   border-radius: 10px;
-  background: rgba(226, 223, 223, .8);
   cursor: pointer;
+}
+
+.indEventView.general {
+  background: rgba(226, 223, 223, .8);
 }
 
 .indEventView.general:hover {
@@ -269,19 +272,7 @@ body {
 }
 
 .indEventView.social {
-  position: relative;
-  left: 1rem;
-  top: 2rem;
-  height: 1.2rem;
-  width: 16rem;
-  display: flex;
-  justify-content: space-between;
-  font-weight: 600;
-  padding: 5px 10px;
-  margin-bottom: 10px;
-  border-radius: 10px;
   background: rgba(255, 234, 71, .8);
-  cursor: pointer;
 }
 
 .indEventView.social:hover {
@@ -289,19 +280,7 @@ body {
 }
 
 .indEventView.holiday {
-  position: relative;
-  left: 1rem;
-  top: 2rem;
-  height: 1.2rem;
-  width: 16rem;
-  display: flex;
-  justify-content: space-between;
-  font-weight: 600;
-  padding: 5px 10px;
-  margin-bottom: 10px;
-  border-radius: 10px;
-  background: rgba(68, 114, 202, .8);
-  cursor: pointer;
+  background: rgba(68, 114, 202, .8); 
 }
 
 .indEventView.holiday:hover {
@@ -309,19 +288,7 @@ body {
 }
 
 .indEventView.personal {
-  position: relative;
-  left: 1rem;
-  top: 2rem;
-  height: 1.2rem;
-  width: 16rem;
-  display: flex;
-  justify-content: space-between;
-  font-weight: 600;
-  padding: 5px 10px;
-  margin-bottom: 10px;
-  border-radius: 10px;
   background: rgba(117, 180, 45, .8);
-  cursor: pointer;
 }
 
 .indEventView.personal:hover {
@@ -329,19 +296,7 @@ body {
 }
 
 .indEventView.important {
-  position: relative;
-  left: 1rem;
-  top: 2rem;
-  height: 1.2rem;
-  width: 16rem;
-  display: flex;
-  justify-content: space-between;
-  font-weight: 600;
-  padding: 5px 10px;
-  margin-bottom: 10px;
-  border-radius: 10px;
   background: rgba(222, 54, 43, .8);
-  cursor: pointer;
 }
 
 .indEventView.important:hover {
@@ -349,19 +304,7 @@ body {
 }
 
 .indEventView.business {
-  position: relative;
-  left: 1rem;
-  top: 2rem;
-  height: 1.2rem;
-  width: 16rem;
-  display: flex;
-  justify-content: space-between;
-  font-weight: 600;
-  padding: 5px 10px;
-  margin-bottom: 10px;
-  border-radius: 10px;
   background: rgba(252, 97, 54, .8);
-  cursor: pointer;
 }
 
 .indEventView.business:hover {
@@ -409,12 +352,35 @@ body {
   height: .7rem;
   width: 6.5rem;
   font-size: 8px;
+  font-weight: 600;
   padding: 2px 8px;
   margin-bottom: 5px;
   border-radius: 15px;
-  outline: 1px solid #e2dfdf;
 }
 
+.dailyEventView.general {
+  background: rgba(226, 223, 223, .8);
+}
+
+.dailyEventView.social {
+  background: rgba(255, 234, 71, .8);
+}
+
+.dailyEventView.holiday {
+  background: rgba(68, 114, 202, .8); 
+}
+
+.dailyEventView.personal {
+  background: rgba(117, 180, 45, .8);
+}
+
+.dailyEventView.important {
+  background: rgba(222, 54, 43, .8);
+}
+
+.dailyEventView.business {
+  background: rgba(252, 97, 54, .8);
+}
 
 /* -- EDIT EVENT STYLES -- */
 
@@ -601,7 +567,8 @@ body {
   top: 15px;
   width: .8rem;
   font-size: 8px;
+  font-weight: 600;
   padding: 2px 8px;
-  border: 1px solid #e2dfdf;
+  background: rgba(226, 223, 223, .8);;
   border-radius: 10px;
 }

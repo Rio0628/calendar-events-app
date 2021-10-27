@@ -64,7 +64,7 @@ class App extends React.Component {
   render () {
     let indEventsContainer = [], indDay = [];
     
-    console.log(this.state.currentMonthDays)
+    // console.log(this.state.currentMonthDays)
     const changeMonthNum = (month) => { return month === '01' ? 0 : month === '02' ? 1 : month === '03' ? 2 : month === '04' ? 3 : month === '05' ? 4 : month === '06' ? 5 : month === '07' ? 6 : month === '08' ? 7 : month === '09' ? 8 : month === '10' ? 9 : month === '11' ? 10 : month === '12' ? 11 : null}
     
     const onChange = (e) => {
@@ -91,8 +91,6 @@ class App extends React.Component {
         this.setState({ startingYear: input[0] });
       }
     }
-    // console.log(this.state.startingYear);
-    // console.log(this.state.startingMonth);
 
     const onClick = (e) => {
       console.log(e.target)
@@ -135,7 +133,7 @@ class App extends React.Component {
       indDay.push( <Day key={'day ' + i} infoDay={this.state.currentMonthDays[i]} events={this.state.testEvents}/> );
     }
 
-    console.log(this.state.testEvents)
+    // console.log(this.state.testEvents)
  
     return (
       <div className="container">

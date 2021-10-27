@@ -17,25 +17,8 @@ const IndEvent = (props) => {
                   <option>Business</option>
     */
 
-    const indBackground = (date) => {
-        if (date === 'General') {
-            return 'general';
-        }
-        if (date === 'Social') {
-            return 'social';
-        }
-        if (date === 'Holiday') {
-            return 'holiday';
-        }
-        if (date === 'Personal') {
-            return 'personal';
-        }
-        if (date === 'Important') {
-            return 'important';
-        }
-        if (date === 'Business') {
-            return 'business';
-        }
+    const indBackground = (type) => {
+        return type === 'General' ? 'general' : type === 'Social' ? 'social' : type === 'Holiday' ? 'holiday' : type === 'Personal' ? 'personal' : type === 'Important' ? 'important' : type === 'Business' ? 'business' : null;
     };
     
     return (

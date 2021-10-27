@@ -1,11 +1,21 @@
 import React from 'react';
 
-const IndDailyEvent = () => {
-    // Include a function that will change the color of the event according to its category
+const IndDailyEvent = (props) => {
+    let indEvent;
 
+    const indBackground = (type) => {
+        return type === 'General' ? 'general' : type === 'Social' ? 'social' : type === 'Holiday' ? 'holiday' : type === 'Personal' ? 'personal' : type === 'Important' ? 'important' : type === 'Business' ? 'business' : null;
+    };
+
+    if (props.eventsPresent) {
+        indEvent = props.info;
+    }
+
+    console.log(indEvent)
+   
     return (
-        <div className='dailyEventView'>
-            Sample Daily Event 1
+        <div className={'dailyEventView ' + indBackground(indEvent.type)}>
+            {indEvent.name}
         </div>
     )
 }
