@@ -12,12 +12,12 @@ class App extends React.Component {
       editEventTriggered: false,
       addEventTriggered: false,
       testEvents: [
-        {date: '2021-10-12', type: 'Holiday', name: 'Birthday Party'},
-        {date: '2021-10-25', type: 'Business', name: 'App Meeting'},
-        {date: '2021-10-22', type: 'General', name: 'Fundraiser'},
-        {date: '2021-10-22', type: 'General', name: 'Fundraiser'},
-        {date: '2021-10-22', type: 'General', name: 'Fundraiser'},
-        {date: '2021-10-22', type: 'General', name: 'Fundraiser'},
+        {date: '2021-10-12', type: 'Holiday', name: 'Birthday Party', event: 'event 1'},
+        {date: '2021-10-25', type: 'Business', name: 'App Meeting', event: 'event 2'},
+        {date: '2021-10-22', type: 'General', name: 'Fundraiser', event: 'event 3'},
+        {date: '2021-10-22', type: 'General', name: 'Fundraiser', event: 'event 4'},
+        {date: '2021-10-22', type: 'General', name: 'Fundraiser', event: 'event 5'},
+        {date: '2021-10-22', type: 'General', name: 'Fundraiser', event: 'event 6'},
       ],
       currentEvents: [],
       currentMonthDays: [],
@@ -69,7 +69,7 @@ class App extends React.Component {
     const changeMonthNum = (month) => { return month === '01' ? 0 : month === '02' ? 1 : month === '03' ? 2 : month === '04' ? 3 : month === '05' ? 4 : month === '06' ? 5 : month === '07' ? 6 : month === '08' ? 7 : month === '09' ? 8 : month === '10' ? 9 : month === '11' ? 10 : month === '12' ? 11 : null}
     
     const onChange = (e) => {
-      console.log(e.target.value);
+      console.log(e.target);
       
       if (e.target.className === 'nameAddEvent') {
         this.setState({ nameNewEvent: e.target.value });
@@ -82,6 +82,19 @@ class App extends React.Component {
       if (e.target.className === 'typeAddEvent') {
         this.setState({ typeNewEvent: e.target.value });
       }
+      
+      if (e.target.className === 'nameInput') {
+        this.setState({ nameEditEvent: e.target.value });
+      }
+
+      if (e.target.className === 'dateInput') {
+        this.setState({ dateEditEvent: e.target.value });
+      }
+
+      if (e.target.className === 'typeInput') {
+        this.setState({ typeEditEvent: e.target.value});
+      }
+
       if (e.target.className === 'setDateInput') {
         let input = e.target.value;
         input = input.toString().split('-');
@@ -92,7 +105,7 @@ class App extends React.Component {
         this.setState({ startingYear: input[0] });
       }
     }
-
+    
     const onClick = async (e) => {
       console.log(e.target)
 
@@ -101,7 +114,7 @@ class App extends React.Component {
       }
 
       if (e.target.className === 'cnfrmBtnAdd') {
-        const object = {date: this.state.dateNewEvent, type: this.state.typeNewEvent, name: this.state.nameNewEvent}
+        const object = {date: this.state.dateNewEvent, type: this.state.typeNewEvent, name: this.state.nameNewEvent, event: `event ${this.state.testEvents.length + 1}`}
         this.setState({ addEventTriggered: false })
         await this.setState(prevState => ({ testEvents: [...prevState.testEvents, object]}));
         this.setState(prevState => ({ currentEvents: this.state.testEvents }));
@@ -113,8 +126,30 @@ class App extends React.Component {
         this.setState({ editEventTriggered: !this.state.editEventTriggered });
       }
 
+      if (e.target.className === 'confirmBtn') {
+      
+        if (this.state.currentEditEvent[0].name !== this.state.nameEditEvent) { this.state.currentEditEvent[0].name = this.state.nameEditEvent};
+        if (this.state.currentEditEvent[0].date !== this.state.dateEditEvent) { this.state.currentEditEvent[0].date = this.state.dateEditEvent}
+        if (this.state.currentEditEvent[0].type !== this.state.typeEditEvent) { this.state.currentEditEvent[0].type = this.state.typeEditEvent}
+
+        for (let i = 0; i < this.state.testEvents.length; i++) {
+          if (this.state.testEvents[i].event === this.state.currentEditEvent[0].event) {
+            this.state.testEvents[i].name = this.state.currentEditEvent[0].name;
+            this.state.testEvents[i].date = this.state.currentEditEvent[0].date;
+            this.state.testEvents[i].type = this.state.currentEditEvent[0].type;
+          }
+        }
+
+        console.log(this.state.currentEditEvent[0])
+        this.setState({ editEventTriggered: !this.state.editEventTriggered });
+      }
+
       if (e.target.className === 'editBtn') {
         const currentEditEvent = this.state.testEvents.filter(event => event.name === e.target.getAttribute('name') )
+
+        this.setState({ nameEditEvent: currentEditEvent[0].name });
+        this.setState({ dateEditEvent: currentEditEvent[0].date });
+        this.setState({ typeEditEvent: currentEditEvent[0].type });
 
         this.setState({ currentEditEvent: currentEditEvent});
         this.setState({ editEventTriggered: !this.state.editEventTriggered});
@@ -148,8 +183,9 @@ class App extends React.Component {
         }
       }
     }
-    console.log(this.state.currentEvents)
-    console.log(this.state.currentEvents.length)
+    
+    console.log(this.state.testEvents)
+
     for (let i = 0; i < this.state.currentEvents.length; i++ ) {    
       indEventsContainer.push( <IndEvent info={this.state.currentEvents[i]} key={'event' + i} onClick={onClick}/>)
     }
@@ -208,7 +244,7 @@ class App extends React.Component {
           </div>
         </div>
 
-        {this.state.editEventTriggered ? <EditEvent onClick={onClick} info={this.state.currentEditEvent[0]}/> : null}
+        {this.state.editEventTriggered ? <EditEvent onClick={onClick} onChange={onChange} info={this.state.currentEditEvent[0]}/> : null}
         
        
       </div>
