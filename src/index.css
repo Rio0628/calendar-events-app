@@ -21,11 +21,8 @@ body {
 
 .calendarView {
   position: relative;
-  /* top: 2rem; */
-  /* right: 4.5rem; */
   height: 40rem;
   width: 80rem;
-  /* background: #fdfafb; */
   border-left: 1px solid black;
   border-radius: 0px 5px 5px 0px;
 }
@@ -50,7 +47,6 @@ body {
   height: 5rem;
   letter-spacing: 10px;
   padding: 5px 12px; 
-  /* outline: 1px solid #e2dfdf; */
 }
 
 .yearHeading {
@@ -60,7 +56,6 @@ body {
   height: 5rem;
   letter-spacing: 15px;
   padding: 5px 12px;
-  /* outline: 1px solid rgba(120, 120, 89, 1); */
 }
 
 .setDateInput {
@@ -68,7 +63,6 @@ body {
   top: -2rem;
   left: 45rem;
   height: .8rem;
-  /* width: 12rem; */
   font-size: 15px;
   padding: 5px 10px;
   outline: 1px solid #e2dfdf;
@@ -103,9 +97,9 @@ body {
 
 .eventsView {
   position: relative;
-  height: 40.2rem;
+  height: 40rem;
   width: 25rem;
-  /* outline: 1px solid red; */
+  overflow-y: hidden;
   border-radius: 10px 0px 0px 10px;
 }
 
@@ -117,17 +111,27 @@ body {
   letter-spacing: 10px;
   text-transform: uppercase;
   text-align: center;
-  /* outline: 1px solid green; */
+}
+
+.dateOfDay {
+  position: relative;
+  bottom: 20px;
+  font-family: 'Saira';
+  font-size: 20px;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  outline: 1px solid black;
 }
 
 .addEventBtn {
   position: relative;
   left: .3rem;
+  bottom: 10px;
   width: 18.5rem;
   text-align: center;
   letter-spacing: 5px;
   text-transform: uppercase;
-  /* padding: 3px 10px; */
   background: #e2dfdf;
   border-radius: 3px;
   cursor: pointer;
@@ -201,7 +205,6 @@ body {
   position: relative;
   bottom: 1.3rem;
   list-style: none;
-  /* outline: 1px solid black; */
 }
 
 .cnfrmBtnAdd {
@@ -244,15 +247,29 @@ body {
 .indEventCntr {
   position: relative;
   top: .5rem;
-  height: 30.8rem;
-  /* outline: 1px solid green; */
-  overflow-y: hidden;
+  left: .1rem;
+  height: 24.5rem;
+  width: 18.8rem;
+  padding: 10px 0px;
+  outline: 1px solid #e2dfdf;
+  border-radius: 5px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.indEventCntr::-webkit-scrollbar {
+  width: 8px;
+  background: #f9f0f2;
+}
+
+.indEventCntr::-webkit-scrollbar-thumb {
+  background: #e2dfdf;
 }
 
 .returnBtn {
   position: relative;
-  left: 14rem;
-  top: 2rem;
+  left: 14.5rem;
+  top: .2rem;
   width: 4rem;
   height: 1.2rem;
   font-size: 13px;
@@ -280,15 +297,13 @@ body {
   letter-spacing: 3px;
   text-align: center;
   text-transform: uppercase;
-  /* border: 1px solid black; */
 }
 
 /* -- INDIVIDUAL EVENT STYLES -- */
 
 .indEventView {
   position: relative;
-  left: 1rem;
-  top: 2rem;
+  left: .5rem;
   height: 1.2rem;
   width: 16rem;
   display: flex;
@@ -298,6 +313,8 @@ body {
   margin-bottom: 10px;
   border-radius: 10px;
   cursor: pointer;
+  word-wrap: break-word;
+  overflow: hidden;
 }
 
 .indEventView.general {
@@ -355,7 +372,6 @@ body {
   height: 20px;
   width: 12rem;
   padding: 1px 5px;
-  /* outline: 1px solid #e2dfdf; */
 }
 
 .editBtn {
@@ -368,7 +384,6 @@ body {
   position: relative;
   bottom: 1.2rem;
   left: 5px;
-  /* height: 1rem; */
   width: 1rem;
   padding: 1px 1px;
   text-align: center;
@@ -394,6 +409,8 @@ body {
   margin-bottom: 5px;
   border-radius: 15px;
   pointer-events: none;
+  word-wrap: break-word;
+  overflow: hidden;
 }
 
 .dailyEventView.general {
@@ -447,7 +464,6 @@ body {
 .nameInput {
   position: relative;
   left: .5rem; 
-  /* height: 1rem; */
   width: 15rem;
   font-size: 13px;
   letter-spacing: 1px;
@@ -469,7 +485,6 @@ body {
   width: 15rem;
   display: flex;
   justify-content: space-between;
-  /* outline: 1px solid black; */
 }
 
 .dateInput {
@@ -509,7 +524,6 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  /* outline: 1px solid red; */
 }
 
 .confirmBtn {
@@ -555,7 +569,6 @@ body {
   outline: none;
 }
 
-
 /* -- DAY STYLES -- */
 
 .indDayView {
@@ -584,7 +597,6 @@ body {
   display: flex;
   justify-content: space-between;
   pointer-events: none;
-  /* border: 1px solid black; */
 }
 
 .dayName {
@@ -595,7 +607,6 @@ body {
   letter-spacing: 1px;
   padding: 0px 3px;
   pointer-events: none;
-  /* border: 1px solid red; */
 }
 
 .dayNum {
@@ -609,11 +620,12 @@ body {
 
 .extraEvents {
   position: relative;
-  left: 5.9rem;
+  left: 5.6rem;
   top: 15px;
-  width: .8rem;
+  width: 1.2rem;
   font-size: 8px;
   font-weight: 600;
+  text-align: center;
   padding: 2px 8px;
   background: rgba(226, 223, 223, .8);;
   border-radius: 10px;

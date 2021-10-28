@@ -11,13 +11,8 @@ class App extends React.Component {
       startingMonth: '',
       editEventTriggered: false,
       addEventTriggered: false,
-      testEvents: [
-        {date: '2021-10-12', type: 'Holiday', name: 'Birthday Party', event: 'event 1'},
-        {date: '2021-10-25', type: 'Business', name: 'App Meeting', event: 'event 2'},
-        {date: '2021-10-22', type: 'General', name: 'Fundraiser', event: 'event 3'},
-        {date: '2021-10-22', type: 'General', name: 'Fundraiser', event: 'event 4'},
-        {date: '2021-10-22', type: 'General', name: 'Fundraiser', event: 'event 5'},
-        {date: '2021-10-22', type: 'General', name: 'Fundraiser', event: 'event 6'},
+      events: [
+        
       ],
       currentEvents: [],
       currentMonthDays: [],
@@ -26,6 +21,7 @@ class App extends React.Component {
   }
 
   daysMonth(month, year) {
+    // Creates an object for all of the days of a certain month using only the necessary information 
     const date = new Date(year, month, 1);
     let days = [], updatedDays = [];
     while(date.getMonth() === month) {
@@ -47,30 +43,32 @@ class App extends React.Component {
     return month === 1 ? 'January' : month === 2 ? 'February' : month === 3 ? 'March' : month === 4 ? 'April' : month === 5 ? 'May' : month === 6 ? 'June' : month === 7 ? 'July' : month === 8 ? 'August' : month === 9 ? 'September' : month === 10 ? 'October' : month === 11 ? 'November' : month === 12 ? 'December' : null;
   }
   
-  componentDidMount() {
+  async componentDidMount() {
     // When the app is started a new date is given to the app (current date)
     const date = new Date();
-  
-    this.setState({ currentEvents: this.state.testEvents });
+    
+    const events = await sessionStorage.getItem('events')
+    // const events = await localStorage.getItem('events')
+    this.setState({ events: JSON.parse(events) });
+    // sessionStorage.setItem('events', JSON.stringify(this.state.events));
+    
+    this.setState({ currentEvents: this.state.events });
     this.setState({ eventsPresent: true });
     this.setState({ startingYear: date.getFullYear() });
     this.setState({ startingMonth: this.createMonth(date.getMonth() + 1) });
     
     // Initialize the typeNewEvent with a type of general as the default in case there is no type change
     this.setState({ typeNewEvent: 'General'});
-    this.daysMonth(date.getMonth(), date.getFullYear());
-
+    this.daysMonth(date.getMonth(), date.getFullYear()); 
   }
-  
+
   render () {
     let indEventsContainer = [], indDay = [];
-    
-    // console.log(this.state.currentMonthDays)
+
     const changeMonthNum = (month) => { return month === '01' ? 0 : month === '02' ? 1 : month === '03' ? 2 : month === '04' ? 3 : month === '05' ? 4 : month === '06' ? 5 : month === '07' ? 6 : month === '08' ? 7 : month === '09' ? 8 : month === '10' ? 9 : month === '11' ? 10 : month === '12' ? 11 : null}
     
     const onChange = (e) => {
-      console.log(e.target);
-      
+      // Basic input gathering within state 
       if (e.target.className === 'nameAddEvent') {
         this.setState({ nameNewEvent: e.target.value });
       }
@@ -96,6 +94,7 @@ class App extends React.Component {
       }
 
       if (e.target.className === 'setDateInput') {
+        // Creates all of the days of the month for picked month and displays the information 
         let input = e.target.value;
         input = input.toString().split('-');
         let month = changeMonthNum(input[1]);
@@ -110,42 +109,44 @@ class App extends React.Component {
       console.log(e.target)
 
       if (e.target.className === 'addEventBtn' || e.target.className === 'cnclBtnAdd') {
+        // Takes care of showing the addEvent element 
         this.setState({ addEventTriggered: !this.state.addEventTriggered });
       }
 
       if (e.target.className === 'cnfrmBtnAdd') {
-        const object = {date: this.state.dateNewEvent, type: this.state.typeNewEvent, name: this.state.nameNewEvent, event: `event ${this.state.testEvents.length + 1}`}
+        // Creates an object with the values of the add Event fields and puts the new event within the events state
+        const object = {date: this.state.dateNewEvent, type: this.state.typeNewEvent, name: this.state.nameNewEvent, event: `event ${this.state.events.length + 1}`}
         this.setState({ addEventTriggered: false })
-        await this.setState(prevState => ({ testEvents: [...prevState.testEvents, object]}));
-        this.setState(prevState => ({ currentEvents: this.state.testEvents }));
+        await this.setState(prevState => ({ events: [...prevState.events, object]}));
+        this.setState(prevState => ({ currentEvents: this.state.events }));
         this.setState({ nameNewEvent: ''});
         this.setState({ dateNewEvent: ''});
       }
 
-      if (e.target.className === 'confirmBtn' || e.target.className === 'cancelBtn') {
+      if (e.target.className === 'cancelBtn') {
         this.setState({ editEventTriggered: !this.state.editEventTriggered });
       }
 
       if (e.target.className === 'confirmBtn') {
-      
+        // Set the value of the edit fielda to the values of the event that has the same event value
         if (this.state.currentEditEvent[0].name !== this.state.nameEditEvent) { this.state.currentEditEvent[0].name = this.state.nameEditEvent};
         if (this.state.currentEditEvent[0].date !== this.state.dateEditEvent) { this.state.currentEditEvent[0].date = this.state.dateEditEvent}
         if (this.state.currentEditEvent[0].type !== this.state.typeEditEvent) { this.state.currentEditEvent[0].type = this.state.typeEditEvent}
 
-        for (let i = 0; i < this.state.testEvents.length; i++) {
-          if (this.state.testEvents[i].event === this.state.currentEditEvent[0].event) {
-            this.state.testEvents[i].name = this.state.currentEditEvent[0].name;
-            this.state.testEvents[i].date = this.state.currentEditEvent[0].date;
-            this.state.testEvents[i].type = this.state.currentEditEvent[0].type;
+        for (let i = 0; i < this.state.events.length; i++) {
+          if (this.state.events[i].event === this.state.currentEditEvent[0].event) {
+            this.state.events[i].name = this.state.currentEditEvent[0].name;
+            this.state.events[i].date = this.state.currentEditEvent[0].date;
+            this.state.events[i].type = this.state.currentEditEvent[0].type;
           }
         }
 
-        console.log(this.state.currentEditEvent[0])
         this.setState({ editEventTriggered: !this.state.editEventTriggered });
       }
 
       if (e.target.className === 'editBtn') {
-        const currentEditEvent = this.state.testEvents.filter(event => event.name === e.target.getAttribute('name') )
+        // Brings up the edit view for certain event and sets the values of the current event into the editView fields 
+        const currentEditEvent = this.state.events.filter(event => event.name === e.target.getAttribute('name') )
 
         this.setState({ nameEditEvent: currentEditEvent[0].name });
         this.setState({ dateEditEvent: currentEditEvent[0].date });
@@ -156,15 +157,19 @@ class App extends React.Component {
       }
 
       if (e.target.className === 'deleteBtn') {
-        // console.log(e.target.getAttribute('name'))
-        let events = this.state.testEvents.map(event => event).filter(event => event.name !== e.target.getAttribute('name'));
-        await this.setState({ testEvents: events});
-        this.setState({ currentEvents: this.state.testEvents });
+        // Create compy of event and will return all events that are not equal to the element name 
+        let events = this.state.events.map(event => event).filter(event => event.name !== e.target.getAttribute('name'));
+        await this.setState({ events: events});
+        this.setState({ currentEvents: this.state.events });
       }
 
       if (e.target.className === 'indDayView') {
-        let events = this.state.testEvents.filter(event => event.date === e.target.getAttribute('date'));
-        
+        // Brings all of the events that have the same date as the individual Days 
+        let events = this.state.events.filter(event => event.date === e.target.getAttribute('date'));
+
+        this.setState({ dailyEventsClicked: true });
+        this.setState({ dayDate: e.target.getAttribute('date') })
+
         if (events.length > 0) {
           this.setState({ currentEvents: events });
           this.setState({ eventsPresent: true });
@@ -173,35 +178,36 @@ class App extends React.Component {
           this.setState({ currentEvents: events});
           this.setState({ eventsPresent: false });
         }
-        
       }
 
       if (e.target.className === 'returnBtn') {
-        if (this.state.currentEvents !== this.state.testEvents) {
-          this.setState({ currentEvents: this.state.testEvents });
-          this.setState({ eventsPresent: true });
-        }
+        // Sets the view for events from the current events from clicking on a day into all events
+        this.setState({ currentEvents: this.state.events });
+        this.setState({ eventsPresent: true });
+        this.setState({ dailyEventsClicked: false });
       }
     }
-    
-    console.log(this.state.testEvents)
 
+    // Creates the indEvents for the events container 
     for (let i = 0; i < this.state.currentEvents.length; i++ ) {    
       indEventsContainer.push( <IndEvent info={this.state.currentEvents[i]} key={'event' + i} onClick={onClick}/>)
     }
    
+    // Creates all individual days to be displayed on mainCalendarContainer 
     for (let i = 0; i < this.state.currentMonthDays.length ; i++) {
-      indDay.push( <Day key={'day ' + i} infoDay={this.state.currentMonthDays[i]} events={this.state.testEvents} onClick={onClick}/> );
+      indDay.push( <Day key={'day ' + i} infoDay={this.state.currentMonthDays[i]} events={this.state.events} onClick={onClick}/> );
     }
 
-    // console.log(this.state.eventsPresent)
- 
     return (
       <div className="container">
         
         <div className='eventsView'>
           <h2 className='eventsViewHeading'>Upcoming Events</h2>
           
+          {this.state.dailyEventsClicked ? <p className='dateOfDay'>day: {this.state.dayDate}</p> : null}
+          
+          
+
           {this.state.addEventTriggered ?
             <form className='addEventOpen'>
               <p className='addEventOpenHeading'>Add Event</p>
@@ -226,8 +232,8 @@ class App extends React.Component {
             <div className='addEventBtn' onClick={onClick}>Add Event</div>
           }
           
-          {/* <p className='clearBtn' onClick={onClick}>Clear</p> */}
-          <div className='returnBtn' onClick={onClick}>return</div>
+          {this.state.dailyEventsClicked ? <div className='returnBtn' onClick={onClick}>return</div> : null }
+          
 
           <div className='indEventCntr'>
             {this.state.eventsPresent ? indEventsContainer : <h3 className='noEventsPrsnt'>There are no events present</h3>}
