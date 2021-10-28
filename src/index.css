@@ -374,6 +374,10 @@ body {
   padding: 1px 5px;
 }
 
+.indEventHeading:hover {
+  text-decoration: underline;
+}
+
 .editBtn {
   position: relative;
   right: .1rem;

@@ -47,7 +47,7 @@ class App extends React.Component {
     // When the app is started a new date is given to the app (current date)
     const date = new Date();
     
-    const events = await sessionStorage.getItem('events')
+    const events = await localStorage.getItem('events')
     // const events = await localStorage.getItem('events')
     this.setState({ events: JSON.parse(events) });
     // sessionStorage.setItem('events', JSON.stringify(this.state.events));
@@ -61,10 +61,10 @@ class App extends React.Component {
     this.setState({ typeNewEvent: 'General'});
     this.daysMonth(date.getMonth(), date.getFullYear()); 
   }
-
+  
   render () {
     let indEventsContainer = [], indDay = [];
-
+ 
     const changeMonthNum = (month) => { return month === '01' ? 0 : month === '02' ? 1 : month === '03' ? 2 : month === '04' ? 3 : month === '05' ? 4 : month === '06' ? 5 : month === '07' ? 6 : month === '08' ? 7 : month === '09' ? 8 : month === '10' ? 9 : month === '11' ? 10 : month === '12' ? 11 : null}
     
     const onChange = (e) => {
@@ -186,8 +186,9 @@ class App extends React.Component {
         this.setState({ eventsPresent: true });
         this.setState({ dailyEventsClicked: false });
       }
-    }
 
+    }
+    
     // Creates the indEvents for the events container 
     for (let i = 0; i < this.state.currentEvents.length; i++ ) {    
       indEventsContainer.push( <IndEvent info={this.state.currentEvents[i]} key={'event' + i} onClick={onClick}/>)
@@ -197,7 +198,7 @@ class App extends React.Component {
     for (let i = 0; i < this.state.currentMonthDays.length ; i++) {
       indDay.push( <Day key={'day ' + i} infoDay={this.state.currentMonthDays[i]} events={this.state.events} onClick={onClick}/> );
     }
-
+    
     return (
       <div className="container">
         
